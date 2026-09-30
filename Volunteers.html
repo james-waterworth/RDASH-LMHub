@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="style/style.css">
 </head>
 
-<body>
+<body class="spa">
   <header class="nhs-header">
     <div class="container">
       <div class="row">
@@ -37,10 +37,10 @@
 
           <div class="collapse navbar-collapse justify-content-center" id="navMenu">
             <ul class="navbar-nav">
-              <li class="nav-item"><a class="nav-link" onclick="showPage('home')">Home</a></li>
-              <li class="nav-item"><a class="nav-link" onclick="showPage('FAQs')">FAQs</a></li>
-              <li class="nav-item"><a class="nav-link" onclick="showPage('feedback')">Feedback</a></li>
-              <li class="nav-item"><a class="nav-link" onclick="showPage('Support')">Support</a></li>
+              <li class="nav-item"><a class="nav-link" role="button" onclick="showPage('home')">Home</a></li>
+              <li class="nav-item"><a class="nav-link" role="button" onclick="showPage('FAQs')">FAQs</a></li>
+              <li class="nav-item"><a class="nav-link" role="button" onclick="showPage('feedback')">Feedback</a></li>
+              <li class="nav-item"><a class="nav-link" role="button" onclick="showPage('Support')">Support</a></li>
               <li class="nav-item"><a class="nav-link" href="index.html">RDaSH Learning Resource Hub</a></li>
             </ul>
           </div>
@@ -57,17 +57,12 @@
           </div>
           <div class="col-auto">
             <div class="d-flex flex-wrap align-items-center gap-2 control-toolbar p-2 rounded">
-              <label for="themeSelector" class="visually-hidden">Choose Theme</label>
-              <select id="themeSelector" class="form-select form-select-sm w-auto">
-                <option value="blue">💙 NHS Blue</option>
-                <option value="green">💚 NHS Green</option>
-                <option value="calm">🩶 NHS Grey</option>
-                <option value="pink">💗 NHS Pink</option>
-                <option value="purple">💜 NHS Purple</option>
-                <option value="red">❤️ NHS Red</option>
-                <option value="yellow">💛 NHS Yellow</option>
-                <option value="contrast">⚠️ High Contrast</option>
-              </select>
+              <button id="contrastToggle" type="button"
+                class="nhs-contrast-toggle"
+                aria-pressed="false" aria-label="Toggle high contrast mode">
+                <span class="contrast-toggle-icon" aria-hidden="true">◑</span>
+                <span class="contrast-toggle-label">High Contrast</span>
+              </button>
               <div class="btn-group btn-group-sm" role="group" aria-label="Text Size">
                 <button onclick="setTextSize('scale-small')" class="btn btn-outline-secondary">A–</button>
                 <button onclick="setTextSize('scale-medium')" class="btn btn-outline-secondary">A</button>
@@ -1018,10 +1013,16 @@
   <!-- JS libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <!-- Core modules (shared across all pages) -->
+  <script src="script/core/config.js"></script>
+  <script src="script/core/navigation.js"></script>
+  <!-- Legacy script for Volunteers-specific SPA logic (showPage, etc.) -->
   <script src="script/script.js" defer></script>
   <script>
-
-
+    document.addEventListener("DOMContentLoaded", () => {
+      applySavedPreferences();
+      initThemeSelector();
+    });
   </script>
 </body>
 

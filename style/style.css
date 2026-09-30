@@ -3,7 +3,7 @@
 ============================================================ */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #E8EDE3;
   transition: font-size 0.2s ease;
 }
 
@@ -68,7 +68,7 @@ a.card.tile-card.bg-warning.bg-warning-dark span {
 }
 
 .upcoming-item {
-  border-left: 5px solid #0d6efd;
+  border-left: 5px solid #005EB8;
   padding: 0.75rem 1rem;
   display: flex;
   justify-content: space-between;
@@ -87,7 +87,7 @@ a.card.tile-card.bg-warning.bg-warning-dark span {
 
 .upcoming-badge {
   background: #e7f1ff;
-  color: #0d6efd;
+  color: #005EB8;
   padding: 0.25rem 0.6rem;
   border-radius: 12px;
   font-size: 0.75rem;
@@ -136,9 +136,26 @@ a.card.tile-card.bg-warning.bg-warning-dark span {
    5. NAVIGATION (MAIN NAVBAR)
 ============================================================ */
 .navbar {
-  background-color: #0072ce;
-  /* NHS Bright Blue */
+  background-color: #0072ce; /* NHS Bright Blue */
   padding: 0.5rem 1rem;
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+.navbar-nav .nav-link.active {
+  text-decoration: underline;
+  font-weight: bold;
+  text-decoration-thickness: 0.2rem;
+  text-underline-offset: 8px;
 }
 
 /* Custom white toggler icon for blue background */
@@ -214,8 +231,9 @@ a.card.tile-card.bg-warning.bg-warning-dark span {
 /* ============================================================
    8. PAGES & LAYOUT CONTAINERS
 ============================================================ */
+/* Multi-page architecture: .page is always visible.
+   The .active class is kept for backward compatibility but no longer needed. */
 .page {
-  display: none;
   padding: 40px;
   background-color: #ffffff;
   max-width: 1200px;
@@ -224,9 +242,14 @@ a.card.tile-card.bg-warning.bg-warning-dark span {
   border-radius: 8px;
 }
 
-/* Show the page when the .active class is applied via JS */
 .page.active {
   display: block;
+}
+
+/* Volunteers.html still uses SPA-style show/hide for its sub-pages.
+   Add class="spa" to <body> on Volunteers.html to enable this. */
+.spa .page:not(.active) {
+  display: none;
 }
 
 /* ============================================================
@@ -299,7 +322,7 @@ body[class*="theme-"] .gradient-col {
 /* --- NHS BLUE (Standard) --- */
 body.theme-blue {
   --theme-bg: #e6f0fa;
-  --theme-primary: #005eb8;
+  --theme-primary: #005EB8;
   --theme-accent: #0072ce;
   --theme-accent-hover: #003087;
   --theme-shadow: rgba(0, 94, 184, 0.08);
@@ -331,125 +354,327 @@ body.theme-calm.dark-mode {
   --theme-btn-text: #000000;
 }
 
-/* --- NHS GREEN --- */
-body.theme-green {
-  --theme-bg: #e9f5ee;
-  --theme-primary: #007f3b;
-  --theme-accent: #007f3b;
-  --theme-accent-hover: #00542a;
-}
-
-body.theme-green.dark-mode {
-  --theme-bg: #002615;
-  --theme-surface: #003d29;
-  --theme-text: #e0f6eb;
-  --theme-primary: #00542a;
-  --theme-accent: #33a36a;
-  --theme-btn-text: #000000;
-}
-
-/* --- NHS PURPLE --- */
-body.theme-purple {
-  --theme-bg: #f3f0f9;
-  --theme-primary: #330072;
-  --theme-accent: #5e2a84;
-  --theme-accent-hover: #3c1663;
-}
-
-body.theme-purple.dark-mode {
-  --theme-bg: #1e0b30;
-  --theme-surface: #290f4d;
-  --theme-text: #f0eaff;
-  --theme-primary: #3c1663;
-  --theme-accent: #9d70c7;
-  --theme-btn-text: #000000;
-}
-
-/* --- NHS RED --- */
-body.theme-red {
-  --theme-bg: #fff6f6;
-  --theme-primary: #d5281b;
-  --theme-accent: #aa1c17;
-  --theme-accent-hover: #891512;
-}
-
-body.theme-red.dark-mode {
-  --theme-bg: #2a1110;
-  --theme-surface: #3a1816;
-  --theme-text: #fff1f1;
-  --theme-primary: #d5281b;
-  --theme-accent: #ffb0a8;
-  --theme-btn-text: #000000;
-}
-
-/* --- NHS PINK --- */
-body.theme-pink {
-  --theme-bg: #fdf4f7;
-  --theme-primary: #7c2855;
-  --theme-accent: #5e1f42;
-  --theme-accent-hover: #461734;
-}
-
-body.theme-pink.dark-mode {
-  --theme-bg: #2e1b27;
-  --theme-surface: #3c2432;
-  --theme-text: #ffeef6;
-  --theme-primary: #7c2855;
-  --theme-accent: #ffb3d1;
-  --theme-btn-text: #000000;
-}
-
-/* --- NHS YELLOW --- */
-body.theme-yellow {
-  --theme-bg: #fffde7;
-  --theme-primary: #ffeb3b;
-  --theme-accent: #fdd835;
-  --theme-accent-hover: #fbc02d;
-  --theme-btn-text: #000000;
-}
-
-body.theme-yellow.dark-mode {
-  --theme-bg: #2a2600;
-  --theme-surface: #3a3500;
-  --theme-text: #fffce0;
-  --theme-primary: #ffeb3b;
-  --theme-accent: #fff176;
-}
-
-/* Set specific font behavior for Yellow theme nav */
-body.theme-yellow .navbar .nav-link {
-  color: #000000 !important;
-}
-
 /* --- HIGH CONTRAST (Accessibility Priority) --- */
+/* Define CSS variables so the generic theme-engine rules also honour
+   the high-contrast palette instead of falling back to white surfaces. */
 body.theme-contrast {
+  --theme-bg: #000000;
+  --theme-surface: #000000;
+  --theme-text: #ffffff;
+  --theme-primary: #000000;
+  --theme-accent: #ffff00;
+  --theme-accent-hover: #ffea00;
+  --theme-btn-text: #000000;
+  --theme-shadow: rgba(255, 255, 0, 0.4);
   background-color: #000000 !important;
   color: #ffffff !important;
 }
 
+/* Core containers */
 body.theme-contrast .page,
 body.theme-contrast .modal-content,
 body.theme-contrast .card {
-  background-color: #000000;
-  color: #ffffff;
-  border: 2px solid #ffff00;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffff00 !important;
+  box-shadow: none !important;
 }
 
+/* Header / navbar */
 body.theme-contrast .nhs-header,
 body.theme-contrast .navbar {
-  background-color: #000000;
-  color: #ffff00;
-  border-bottom: 2px solid #ffff00;
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border-bottom: 2px solid #ffff00 !important;
 }
 
+/* Buttons */
 body.theme-contrast .btn-primary {
-  background-color: #ffff00;
-  color: #000000;
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+  border: 2px solid #ffff00 !important;
   font-weight: bold;
+}
+
+body.theme-contrast .btn-primary:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+body.theme-contrast .btn-secondary,
+body.theme-contrast .btn-outline-primary {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
 }
 
 body.theme-contrast .btn-close {
   filter: invert(1);
+}
+
+/* Card sub-parts must not reintroduce white surfaces */
+body.theme-contrast .card-header,
+body.theme-contrast .card-footer,
+body.theme-contrast .card-body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffff00 !important;
+}
+
+/* Override Bootstrap background utilities that would hide text */
+body.theme-contrast .bg-light,
+body.theme-contrast .bg-white,
+body.theme-contrast .bg-transparent {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.theme-contrast .text-dark,
+body.theme-contrast .text-body,
+body.theme-contrast .text-muted {
+  color: #ffffff !important;
+}
+
+body.theme-contrast .text-primary {
+  color: #ffff00 !important;
+}
+
+/* Dashboard tile cards — keep the coloured tiles but ensure readable text
+   and a visible yellow border so they stand out on black. */
+body.theme-contrast .tile-card {
+  border: 2px solid #ffff00 !important;
+  color: #ffffff !important;
+}
+
+body.theme-contrast .tile-card.bg-primary,
+body.theme-contrast .tile-card.bg-success,
+body.theme-contrast .tile-card.bg-info,
+body.theme-contrast .tile-card.bg-danger,
+body.theme-contrast .tile-card.bg-secondary,
+body.theme-contrast .tile-card.bg-warning {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+
+body.theme-contrast .tile-card .card-body,
+body.theme-contrast .tile-card h3,
+body.theme-contrast .tile-card span,
+body.theme-contrast .tile-card i {
+  color: #ffff00 !important;
+}
+
+body.theme-contrast .tile-card:hover,
+body.theme-contrast .tile-card:focus {
+  background-color: #1a1a1a !important;
+  box-shadow: 0 0 0 3px #ffff00 !important;
+}
+
+/* Upcoming sessions list */
+body.theme-contrast .upcoming-item {
+  background-color: #000000 !important;
+  border-left: 5px solid #ffff00 !important;
+  color: #ffffff !important;
+}
+
+body.theme-contrast .upcoming-title {
+  color: #ffffff !important;
+}
+
+body.theme-contrast .upcoming-meta {
+  color: #cccccc !important;
+}
+
+body.theme-contrast .upcoming-badge {
+  background: #000000 !important;
+  color: #ffff00 !important;
+  border: 1px solid #ffff00 !important;
+}
+
+/* Carousel captions / glass-effect boxes */
+body.theme-contrast .glass-effect,
+body.theme-contrast .caption-box {
+  background: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Control / accessibility toolbar */
+body.theme-contrast .control-toolbar {
+  background-color: #000000 !important;
+  border-bottom: 2px solid #ffff00 !important;
+}
+
+/* Breadcrumbs */
+body.theme-contrast .breadcrumb,
+body.theme-contrast .breadcrumb-item,
+body.theme-contrast .breadcrumb-item a {
+  background-color: transparent !important;
+  color: #ffff00 !important;
+}
+
+body.theme-contrast .breadcrumb-item.active {
+  color: #ffffff !important;
+}
+
+/* Badges */
+body.theme-contrast .badge {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+  border: 1px solid #ffff00 !important;
+}
+
+/* Alerts */
+body.theme-contrast .alert {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffff00 !important;
+}
+
+/* List groups */
+body.theme-contrast .list-group,
+body.theme-contrast .list-group-item {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffff00 !important;
+}
+
+/* Accordion */
+body.theme-contrast .accordion-item,
+body.theme-contrast .accordion-button {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border-color: #ffff00 !important;
+}
+
+body.theme-contrast .accordion-button:not(.collapsed) {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+}
+
+body.theme-contrast .accordion-body {
+  color: #ffffff !important;
+}
+
+/* Nav links & dropdowns */
+body.theme-contrast .nav-link,
+body.theme-contrast .dropdown-item {
+  color: #ffff00 !important;
+}
+
+body.theme-contrast .nav-link:hover,
+body.theme-contrast .dropdown-item:hover {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+}
+
+body.theme-contrast .nav-link.active {
+  color: #ffffff !important;
+  border-bottom: 3px solid #ffff00 !important;
+}
+
+body.theme-contrast .dropdown-menu {
+  background-color: #000000 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+/* Tables */
+body.theme-contrast .table,
+body.theme-contrast .table th,
+body.theme-contrast .table td,
+body.theme-contrast #mrTable,
+body.theme-contrast #mrTable th,
+body.theme-contrast #mrTable td {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffff00 !important;
+}
+
+body.theme-contrast .table tbody tr:nth-child(even),
+body.theme-contrast #mrTable tbody tr:nth-child(even) {
+  background-color: #1a1a1a !important;
+}
+
+body.theme-contrast .table tbody tr:hover,
+body.theme-contrast #mrTable tbody tr:hover {
+  background-color: #333300 !important;
+}
+
+/* Venue / training tabs */
+body.theme-contrast #venueTabs .nav-link,
+body.theme-contrast #trainingTab .nav-link {
+  color: #ffff00 !important;
+  background-color: #000000 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+body.theme-contrast #venueTabs .nav-link.active,
+body.theme-contrast #trainingTab .nav-link.active {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+}
+
+/* Prospectus / catalogue cards */
+body.theme-contrast .prospectus-card {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffff00 !important;
+  border-left: 5px solid #ffff00 !important;
+}
+
+body.theme-contrast .prospectus-card:hover {
+  background-color: #1a1a1a !important;
+}
+
+/* Alphabet navigation buttons */
+body.theme-contrast .alphabet-nav .btn {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+body.theme-contrast .alphabet-nav .btn:hover {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+}
+
+/* Soft-info panels */
+body.theme-contrast .bg-soft-info {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+/* Gradient / heading text */
+body.theme-contrast .gradient-text {
+  color: #ffff00 !important;
+  text-shadow: none !important;
+}
+
+/* Modal form controls */
+body.theme-contrast .form-control,
+body.theme-contrast .form-select {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+body.theme-contrast .modal-header,
+body.theme-contrast .modal-footer {
+  border-color: #ffff00 !important;
+  color: #ffff00 !important;
+}
+
+/* Links */
+body.theme-contrast a {
+  color: #ffff00 !important;
+}
+
+body.theme-contrast a:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
 }
 
 /* Apply global background color to all themes */
@@ -503,6 +728,73 @@ body.dark-mode .control-toolbar {
   border-bottom: 1px solid #444;
 }
 
+/* --- NHS High Contrast Toggle Button --- */
+.nhs-contrast-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #ffffff;
+  color: #005EB8;
+  border: 2px solid #005EB8;
+  border-radius: 6px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nhs-contrast-toggle .contrast-toggle-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.nhs-contrast-toggle:hover,
+.nhs-contrast-toggle:focus {
+  background-color: #003087;
+  color: #ffffff;
+  border-color: #003087;
+  box-shadow: 0 0 0 3px rgba(0, 94, 184, 0.35);
+  outline: none;
+}
+
+/* Active (high contrast ON) state — NHS yellow accent */
+.nhs-contrast-toggle.is-active {
+  background-color: #ffff00;
+  color: #000000;
+  border-color: #000000;
+}
+
+.nhs-contrast-toggle.is-active:hover,
+.nhs-contrast-toggle.is-active:focus {
+  background-color: #ffea00;
+  color: #000000;
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(255, 255, 0, 0.45);
+}
+
+/* When high contrast theme is active, keep the button legible */
+body.theme-contrast .nhs-contrast-toggle {
+  background-color: #000000;
+  color: #ffff00;
+  border-color: #ffff00;
+}
+
+body.theme-contrast .nhs-contrast-toggle:hover,
+body.theme-contrast .nhs-contrast-toggle:focus {
+  background-color: #ffff00;
+  color: #000000;
+  border-color: #ffff00;
+}
+
+body.theme-contrast .nhs-contrast-toggle.is-active {
+  background-color: #ffff00;
+  color: #000000;
+  border-color: #ffff00;
+}
+
 /* ============================================================
    16. BANNERS & BRANDING IMAGES
 ============================================================ */
@@ -540,58 +832,55 @@ body.dark-mode .control-toolbar {
 ============================================================ */
 .logo-container {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   margin: 0 auto;
+}
+
+/* Header brand row: left logo + title + right logo */
+.brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 2rem;
+}
+
+.brand-row h1 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.header-logo-right {
+  margin: 0 0 0 auto;
+}
+
+/* Right-aligned logo in the brand row, aligned with the title */
+.header-right-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  margin-left: auto;
+}
+
+/* Static (non-animated) logos in the header should always be visible */
+.static-logo .logo {
+  opacity: 1;
+  animation: none;
 }
 
 .logo {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 200%;
+  height: 200%;
   object-fit: contain;
   opacity: 0;
   animation-duration: 8s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
-}
-
-.esr {
-  animation-name: fadeESR;
-}
-
-.nhs {
-  animation-name: fadeNHS;
-}
-
-@keyframes fadeESR {
-
-  0%,
-  40%,
-  100% {
-    opacity: 1;
-  }
-
-  50%,
-  90% {
-    opacity: 0;
-  }
-}
-
-@keyframes fadeNHS {
-
-  0%,
-  40%,
-  100% {
-    opacity: 0;
-  }
-
-  50%,
-  90% {
-    opacity: 1;
-  }
 }
 
 
@@ -1042,7 +1331,7 @@ header,
 
 .fc .fc-list-event-time {
   font-weight: 700;
-  color: #0d6efd;
+  color: #005EB8;
   font-size: 0.9rem;
   padding: 0.85rem 1.25rem !important;
   white-space: nowrap;

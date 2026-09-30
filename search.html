@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>RDaSH Learning Hub – Search</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+  <div id="header-mount"></div>
+
+  <div class="page active">
+    <div class="container py-4">
+
+      <div class="row mb-4">
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-light p-3 rounded-pill shadow-sm">
+              <li class="breadcrumb-item">
+                <a href="index.html" class="text-decoration-none">
+                  <i class="bi bi-house-door"></i> Hub
+                </a>
+              </li>
+              <li class="breadcrumb-item active fw-bold text-primary" aria-current="page">Search Results</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-10">
+          <h1 class="display-5 fw-bold text-dark">Search Results</h1>
+          <p class="lead text-muted">Searching across courses, videos, and QI resources.</p>
+        </div>
+        <div class="col-md-2 text-end d-none d-md-block mt-2">
+          <div class="p-3 bg-primary bg-opacity-10 rounded-4 border-start border-primary border-4 d-inline-block">
+            <i class="bi bi-search display-6 text-primary"></i>
+          </div>
+        </div>
+      </div>
+
+      <div id="searchResults">
+        <div class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-3 text-muted">Loading search results...</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="modal-mount"></div>
+  <div id="footer-mount"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script/core/config.js"></script>
+  <script src="script/core/data-loader.js"></script>
+  <script src="script/core/navigation.js"></script>
+  <script src="script/core/header.js"></script>
+  <script src="script/pages/search.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", initSearchPage);
+  </script>
+</body>
+
+</html>

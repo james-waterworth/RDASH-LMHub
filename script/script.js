@@ -816,12 +816,19 @@ function filterRooms() {
   }
 }
 
-// --- Theme Selector Logic ---
-const themeSelector = document.getElementById("themeSelector");
+// --- Theme Toggle Logic (High Contrast) ---
+const contrastToggle = document.getElementById("contrastToggle");
 
-if (themeSelector) {
-  themeSelector.addEventListener("change", (e) => {
-    const selectedTheme = e.target.value;
+if (contrastToggle) {
+  // Sync initial state
+  const savedInitTheme = localStorage.getItem("user-theme") || "blue";
+  const initIsContrast = savedInitTheme === "contrast";
+  contrastToggle.setAttribute("aria-pressed", String(initIsContrast));
+  contrastToggle.classList.toggle("is-active", initIsContrast);
+
+  contrastToggle.addEventListener("click", () => {
+    const currentlyContrast = contrastToggle.getAttribute("aria-pressed") === "true";
+    const nextTheme = currentlyContrast ? "blue" : "contrast";
 
     document.body.classList.forEach((className) => {
       if (className.startsWith("theme-")) {
@@ -829,8 +836,12 @@ if (themeSelector) {
       }
     });
 
-    document.body.classList.add(`theme-${selectedTheme}`);
-    localStorage.setItem("user-theme", selectedTheme);
+    document.body.classList.add(`theme-${nextTheme}`);
+    localStorage.setItem("user-theme", nextTheme);
+
+    const nowContrast = nextTheme === "contrast";
+    contrastToggle.setAttribute("aria-pressed", String(nowContrast));
+    contrastToggle.classList.toggle("is-active", nowContrast);
   });
 }
 
@@ -845,7 +856,11 @@ function setTextSize(scaleClass) {
 // --- Initialization on Page Load ---
 window.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("user-theme") || "blue";
-  if (themeSelector) themeSelector.value = savedTheme;
+  if (contrastToggle) {
+    const isContrast = savedTheme === "contrast";
+    contrastToggle.setAttribute("aria-pressed", String(isContrast));
+    contrastToggle.classList.toggle("is-active", isContrast);
+  }
   document.body.classList.add(`theme-${savedTheme}`);
 
   const savedScale = localStorage.getItem("user-font-scale") || "scale-medium";
