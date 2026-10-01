@@ -50,7 +50,7 @@ function injectHeader(activePage) {
       <div class="container mt-3">
         <div class="row align-items-center g-2">
           <div class="col">
-            <input type="text" id="searchInput" class="form-control" placeholder="Search" onkeyup="searchPages()">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search" onkeyup="if(event.key==='Enter')searchPages()">
           </div>
           <div class="col-auto">
             <div class="d-flex flex-wrap align-items-center gap-2 control-toolbar p-2 rounded">
