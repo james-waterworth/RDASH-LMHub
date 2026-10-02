@@ -1390,3 +1390,168 @@ header,
   max-height: 320px;
   overflow-y: auto;
 }
+
+/* ============================================================
+   27. LHD SYSTEM PLAN — EDUCATOR PAGE
+============================================================ */
+.lhd-section-title {
+  color: #005EB8;
+  font-weight: 700;
+  border-bottom: 2px solid #005EB8;
+  padding-bottom: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.lhd-legend .lhd-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  margin-right: 1.25rem;
+  font-weight: 600;
+}
+
+.lhd-swatch {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.lhd-swatch.standard {
+  background-color: #ffffff;
+}
+
+.lhd-swatch.blue {
+  background-color: #dae8fc;
+}
+
+.lhd-swatch.peach {
+  background-color: #ffd9b3;
+}
+
+/* The big recording table */
+.lhd-table {
+  font-size: 0.78rem;
+  vertical-align: middle;
+}
+
+.lhd-table thead th {
+  background-color: #005EB8;
+  color: #fff;
+  font-weight: 700;
+  border-color: #003087;
+  white-space: nowrap;
+}
+
+.lhd-table tbody td {
+  white-space: nowrap;
+}
+
+.lhd-table .col-blue {
+  background-color: #eef4fc;
+}
+
+.lhd-table .col-peach {
+  background-color: #fff3e0;
+}
+
+.lhd-table .row-blank {
+  background-color: #f8f9fa;
+  color: #9aa0a6;
+  font-style: italic;
+}
+
+.lhd-table .row-example {
+  border-left: 4px solid #198754;
+}
+
+.lhd-table .row-example-alt {
+  border-left: 4px solid #0dcaf0;
+}
+
+/* Example entry cards */
+.lhd-example-card {
+  border-radius: 1rem;
+  border-left: 5px solid #005EB8;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lhd-example-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.lhd-example-card.new-course {
+  border-left-color: #198754;
+}
+
+.lhd-example-card.existing-course {
+  border-left-color: #0dcaf0;
+}
+
+.lhd-example-card dt {
+  color: #6c757d;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.15rem;
+}
+
+.lhd-example-card dd {
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+/* Toolkit step badges */
+.lhd-step-badge {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: #005EB8;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 94, 184, 0.2);
+}
+
+.lhd-tip-list li::marker {
+  color: #0072ce;
+}
+
+.lhd-guidance-list li::marker {
+  color: #d5281b;
+}
+
+/* Theme-aware adjustments */
+body[class*="theme-"] .lhd-section-title {
+  color: var(--theme-accent, #005EB8);
+  border-bottom-color: var(--theme-accent, #005EB8);
+}
+
+body[class*="theme-"] .lhd-table thead th {
+  background-color: var(--theme-accent, #005EB8);
+  border-color: var(--theme-accent-hover, #003087);
+  color: var(--theme-btn-text, #fff);
+}
+
+body[class*="theme-"] .lhd-step-badge {
+  background-color: var(--theme-accent, #005EB8);
+  color: var(--theme-btn-text, #fff);
+}
+
+body.theme-contrast .lhd-table,
+body.theme-contrast .lhd-table th,
+body.theme-contrast .lhd-table td {
+  border-color: #ffff00 !important;
+}
+
+body.theme-contrast .lhd-table .col-blue,
+body.theme-contrast .lhd-table .col-peach {
+  background-color: #2b2b2b !important;
+}
