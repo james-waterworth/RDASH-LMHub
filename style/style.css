@@ -856,6 +856,13 @@ body.theme-contrast .nhs-contrast-toggle.is-active {
   margin: 0 0 0 auto;
 }
 
+/* Left-aligned logo in the brand row */
+.header-left-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+
 /* Right-aligned logo in the brand row, aligned with the title */
 .header-right-logo {
   height: 80px;
@@ -1526,6 +1533,44 @@ header,
 
 .lhd-guidance-list li::marker {
   color: #d5281b;
+}
+
+/* Tips accordion */
+.lhd-tips-accordion .accordion-item {
+  border: 1px solid rgba(0, 94, 184, 0.15);
+  border-radius: 0.5rem !important;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.lhd-tips-accordion .accordion-button {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #005EB8;
+  background-color: #f3f8ff;
+  padding: 0.65rem 1rem;
+}
+
+.lhd-tips-accordion .accordion-button:not(.collapsed) {
+  color: #003087;
+  background-color: #e6f0ff;
+  box-shadow: inset 0 -1px 0 rgba(0, 94, 184, 0.15);
+}
+
+.lhd-tips-accordion .accordion-button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 94, 184, 0.15);
+  border-color: #005EB8;
+}
+
+.lhd-tips-accordion .accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23005EB8'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.lhd-tips-accordion .accordion-body {
+  font-size: 0.9rem;
+  color: #495057;
+  padding: 0.85rem 1rem;
+  background-color: #fff;
 }
 
 /* Theme-aware adjustments */

@@ -31,6 +31,7 @@ function injectHeader(activePage) {
   <header class="nhs-header">
     <div class="container">
       <div class="brand-row">
+        <img src="Assets/LMHub_Logo.png" class="header-left-logo" alt="Learning Hub logo" />
         <h1></h1>
         <img src="Assets/rdashwhite.PNG" class="header-right-logo" alt="RDaSH logo" />
       </div>

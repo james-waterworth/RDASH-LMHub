@@ -92,24 +92,90 @@
             </div>
           </div>
 
-          <!-- Tips and guidance in two columns -->
-          <div class="row g-4">
-            <div class="col-lg-6">
-              <div class="card h-100 shadow-sm border-0">
+          <!-- Class submission guidance: explains what to enter in each form field -->
+          <div class="row g-4 mb-4">
+            <div class="col-12">
+              <div class="card shadow-sm border-0">
                 <div class="card-body">
-                  <h6 class="fw-bold text-primary mb-3"><i class="bi bi-lightbulb me-1"></i>Tips for completing this form</h6>
-                  <ul class="lhd-tip-list">
-                    <li class="mb-2"><strong>Course name/topic:</strong> Write the main name of the course. This is the overall "group name". Example: Poverty Proofing, Autism</li>
-                    <li class="mb-2"><strong>Class title:</strong> Write the full title of the class. Example: "Poverty Proofing: Children's Care Group only", "Autism: Beginners guide to Autism"</li>
-                    <li class="mb-2"><strong>Class date:</strong> Ensure the date matches one of the Learning Half Day dates.</li>
-                    <li class="mb-2"><strong>Class time:</strong> Ensure the time matches a Learning Half Day time.</li>
-                    <li class="mb-2"><strong>Duration:</strong> Write how long the lesson will last and add the times.</li>
-                  </ul>
+                  <h6 class="fw-bold text-primary mb-1"><i class="bi bi-clipboard-check me-1"></i>How to complete your class submission</h6>
+                  <p class="text-muted small mb-3">Expand each field below to see exactly what to enter, with examples. Getting these details right first time means we can add your class to the Learning Half Day programme without coming back to you for more information.</p>
+                  <div class="accordion lhd-tips-accordion" id="lhdTipsAccordion">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tipCourseName" aria-expanded="false">
+                          Course name or topic
+                        </button>
+                      </h2>
+                      <div id="tipCourseName" class="accordion-collapse collapse" data-bs-parent="#lhdTipsAccordion">
+                        <div class="accordion-body">
+                          <p class="mb-2">Enter the broad subject your class sits under. This acts as the overall &ldquo;group name&rdquo; in the programme, and several related classes can share the same course name, so keep it short and general &ndash; one or two words is usually enough.</p>
+                          <p class="mb-2"><strong>Examples:</strong> <em>Poverty Proofing</em>, <em>Autism</em></p>
+                          <p class="mb-0 small text-muted">Don&rsquo;t include the audience, level or date here &ndash; those details belong in the class title.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tipClassTitle" aria-expanded="false">
+                          Class title
+                        </button>
+                      </h2>
+                      <div id="tipClassTitle" class="accordion-collapse collapse" data-bs-parent="#lhdTipsAccordion">
+                        <div class="accordion-body">
+                          <p class="mb-2">Enter the full title of your class exactly as it should appear in the Learning Half Day programme. This is what learners will see when choosing sessions, so make it clear and specific &ndash; include the audience or level where relevant. If you&rsquo;re running more than one class under the same course name, give each class a different title.</p>
+                          <p class="mb-0"><strong>Examples:</strong> <em>Poverty Proofing: Children&rsquo;s Care Group only</em>, <em>Autism: A beginner&rsquo;s guide to autism</em></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tipClassDate" aria-expanded="false">
+                          Class date
+                        </button>
+                      </h2>
+                      <div id="tipClassDate" class="accordion-collapse collapse" data-bs-parent="#lhdTipsAccordion">
+                        <div class="accordion-body">
+                          <p class="mb-2">Enter the Learning Half Day date on which your class will run. Classes can only take place on published Learning Half Day dates, so check the current schedule before completing this field.</p>
+                          <p class="mb-0 small text-muted">Submissions with a date that doesn&rsquo;t match a scheduled Learning Half Day may be returned for correction, which could delay your class being added to the programme.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tipClassTime" aria-expanded="false">
+                          Class time
+                        </button>
+                      </h2>
+                      <div id="tipClassTime" class="accordion-collapse collapse" data-bs-parent="#lhdTipsAccordion">
+                        <div class="accordion-body">
+                          <p class="mb-2">Enter the start time of your class using the 24-hour clock (for example, 09:30 or 13:15). Your class must start and finish within one of the published Learning Half Day session times &ndash; check the schedule before completing this field.</p>
+                          <p class="mb-0 small text-muted">Classes scheduled outside these times may need to be rearranged before they can be added to the programme.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tipDuration" aria-expanded="false">
+                          Duration
+                        </button>
+                      </h2>
+                      <div id="tipDuration" class="accordion-collapse collapse" data-bs-parent="#lhdTipsAccordion">
+                        <div class="accordion-body">
+                          <p class="mb-2">Tell us how long your class will last, giving both the total duration and the start and finish times. For example: <em>2 hours, 10:00&ndash;12:00</em> or <em>90 minutes, 13:30&ndash;15:00</em>.</p>
+                          <p class="mb-0 small text-muted">This helps learners see at a glance how long your session runs, and lets us confirm your class fits within the half-day session.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="small text-muted mt-3 mb-0"><i class="bi bi-info-circle me-1"></i>Still unsure about any of these fields? Contact the Learning Half Day team before submitting and we&rsquo;ll help you get it right first time. <!-- Add your team's contact details or link here --></p>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="col-lg-6">
+          <!-- Important Submission Guidance -->
+          <div class="row g-4">
+            <div class="col-12">
               <div class="card h-100 shadow-sm border-0">
                 <div class="card-body">
                   <h6 class="fw-bold text-danger mb-3"><i class="bi bi-exclamation-triangle me-1"></i>Important Submission Guidance</h6>
